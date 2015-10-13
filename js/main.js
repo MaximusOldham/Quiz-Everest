@@ -41,10 +41,16 @@ var answers = [
 
 $("#btnPlay").on("click", function(evt){
   $('div.button').hide("slow");
+  
   $("#quiz-question").append(question[0]);
-    for(var i=0; i < answers[0].choices.length; i++) {
-      $("<li>" + answers[0].choices[i] + "</li>").appendTo($("#quiz-choices-ul")).attr('id', 'li' + [i]);
-    }
+
+  for(var i=0; i < answers[0].choices.length; i++) {
+    var $li  = $("<li>", {id: 'li' + i});
+    var $btn = $("<button>", {text: answers[0].choices[i]});
+    $li.append($btn)
+    $li.appendTo($("#quiz-choices-ul"));
+  }
+
 });
 
 
