@@ -49,8 +49,15 @@ $("#btnPlay").on("click", function(evt){
     var $li  = $("<li>");
     var $btn = $("<button>", {text: answers[0].choices[i], id: 'a' + i});
 
-    // if this choice is the correct one, let's add an attribute to the button
-    // class="correct"
+    $btn.on("click", function(evt) {
+      var answer = evt.target.id.slice(-1);
+
+      if (parseInt(answer) !== answers[currentQuestion].correct) {
+        // ???
+      } else {
+        console.log("You're right!");
+      }
+    });
 
     $li.append($btn)
     $li.appendTo($("#quiz-choices-ul"));
