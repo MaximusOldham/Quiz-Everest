@@ -38,6 +38,7 @@ var answers = [
   { correct: 0, choices: ["True", "False"]}
 ];
 
+var currentQuestion = 0;
 
 $("#btnPlay").on("click", function(evt){
   $('div.button').hide("slow");
@@ -45,8 +46,12 @@ $("#btnPlay").on("click", function(evt){
   $("#quiz-question").append(question[0]);
 
   for(var i=0; i < answers[0].choices.length; i++) {
-    var $li  = $("<li>", {id: 'li' + i});
-    var $btn = $("<button>", {text: answers[0].choices[i]});
+    var $li  = $("<li>");
+    var $btn = $("<button>", {text: answers[0].choices[i], id: 'a' + i});
+
+    // if this choice is the correct one, let's add an attribute to the button
+    // class="correct"
+
     $li.append($btn)
     $li.appendTo($("#quiz-choices-ul"));
   }
