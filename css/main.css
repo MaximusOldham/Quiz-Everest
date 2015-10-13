@@ -1,0 +1,51 @@
+h1 {
+	font-size: 100px;
+	font-family: Century Gothic, sans-serif;
+  margin-bottom: 0px;
+}
+
+h2 {
+  font-size: 40px;
+  font-family: Century Gothic, sans-serif;
+  margin-top: 0px;
+}
+
+body {
+	width: 50%;
+	background-image: url(https://i.imgur.com/KOf8q5i.png);
+	background-repeat: no-repeat;
+	background-size: cover; 
+}
+button {
+  -webkit-border-radius: 42;
+  -moz-border-radius: 42;
+  border-radius: 42px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 25px;
+  background: #d93434;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+button:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}
+
+button {
+  -webkit-border-radius: 42;
+  -moz-border-radius: 42;
+  border-radius: 42px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 25px;
+  background: #d93434;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+button:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}
