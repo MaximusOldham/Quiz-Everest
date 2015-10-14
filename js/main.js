@@ -180,7 +180,29 @@ var render = function() {
   } else if (climber === 1) {
     $climber.removeClass("first");
     $climber.addClass("second");
-  }
+  } else if (climber === 2) {
+    $climber.removeClass("first");
+    $climber.removeClass("second");
+    $climber.addClass("third");
+  } else if (climber === 3) {
+    $climber.removeClass("first");
+    $climber.removeClass("second");
+    $climber.removeClass("third");
+    $climber.addClass("fourth");
+  } else if (climber === 4) {
+    $climber.removeClass("first");
+    $climber.removeClass("second");
+    $climber.removeClass("third");
+    $climber.removeClass("fourth");
+    $climber.addClass("fifth");
+  } else if (climber === 5) {
+    $climber.removeClass("first");
+    $climber.removeClass("second");
+    $climber.removeClass("third");
+    $climber.removeClass("fourth");
+    $climber.removeClass("fifth");
+    $climber.addClass("sixth");
+  } 
 };
 
 

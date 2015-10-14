@@ -2,6 +2,7 @@ h1 {
 	font-size: 100px;
 	font-family: Century Gothic, sans-serif;
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 h2 {
@@ -70,12 +71,36 @@ button:hover {
 
 #climber.first {
   visibility: visible;
-  bottom:  100px;
-  left:    200px;
+  bottom:  80px;
+  left:    150px;
 }
 
 #climber.second {
   visibility: visible;
+  bottom:  200px;
+  left:    320px;
+}
+
+#climber.third {
+  visibility: visible;
   bottom:  300px;
   left:    400px;
+}
+
+#climber.fourth {
+  visibility: visible;
+  bottom:  360px;
+  left:    480px;
+}
+
+#climber.fifth {
+  visibility: visible;
+  bottom:  400px;
+  left:    610px;
+}
+
+#climber.sixth {
+  visibility: visible;
+  bottom:  500px;
+  left:    700px;
 }
