@@ -55,3 +55,27 @@ button:hover {
 #quiz-choices-ul {
   list-style-type: none;
 }
+
+#climber {
+  visibility: hidden;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-image: url(http://www.mountainguides.com/photos/everest-south/summit-waechter.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+#climber.first {
+  visibility: visible;
+  bottom:  100px;
+  left:    200px;
+}
+
+#climber.second {
+  visibility: visible;
+  bottom:  300px;
+  left:    400px;
+}

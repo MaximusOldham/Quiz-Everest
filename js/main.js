@@ -43,8 +43,15 @@ var answers = [
 
 var currentQuestion = 0;
 
-/* EVENT LISTENERS */
+var climber = 0;
 
+
+/* CACHE DOM REFERENCES */
+
+$climber = $('#climber');
+
+
+/* EVENT LISTENERS */
 
 $("#btnPlay").on("click", function(evt){
   $('div.button').hide("slow");
@@ -55,31 +62,6 @@ var nextQuestion = function() {
   currentQuestion++;
   render();
 };
-
-var render = function() {
-  // get the current question info
-  var question = questions[currentQuestion];
-  var answer   = answers[currentQuestion];
-
-  // clear out the question on the page
-  $("#quiz-question").html("");
-  $("#quiz-choices-ul").html("");
-
-  // add the new question
-  $("#quiz-question").append(question);
-
-  for(var i=0; i < answer.choices.length; i++) {
-    var $li  = $("<li>");
-
-    // build all of the answer buttons with click listeners
-    var $btn = $("<button>", {text: answer.choices[i], id: 'a' + i});
-    $btn.on("click", checkAnswer);
-
-    $li.append($btn)
-    $li.appendTo($("#quiz-choices-ul"));
-  }
-};
-
 
 // $('<li>').click(function() {
 //   chosen = target.text;
@@ -101,11 +83,20 @@ var checkAnswer = function(evt) {
   var choice = evt.target.id.slice(-1);
 
   if (parseInt(choice) === answers[currentQuestion].correct) {
-    console.log('CORRECT');
-    score++;
+    // console.log('CORRECT');
+    increaseScore();
   }
   nextQuestion();
 };
+
+var increaseScore = function() {
+  score++;
+
+  if (score % 3 === 0) {
+    console.log('CLIMB!');
+    climber++;
+  }
+}
 
 // $(".quiz-choices-ul").on("click", checkAnswer)
 
@@ -156,8 +147,41 @@ var checkAnswer = function(evt) {
 //     }
 // });
 
+/* RENDER */
 
+var render = function() {
+  // get the current question info
+  var question = questions[currentQuestion];
+  var answer   = answers[currentQuestion];
 
+  // clear out the question on the page
+  $("#quiz-question").html("");
+  $("#quiz-choices-ul").html("");
+
+  // add the new question
+  $("#quiz-question").append(question);
+
+  for(var i=0; i < answer.choices.length; i++) {
+    var $li  = $("<li>");
+
+    // build all of the answer buttons with click listeners
+    var $btn = $("<button>", {text: answer.choices[i], id: 'a' + i});
+    $btn.on("click", checkAnswer);
+
+    $li.append($btn)
+    $li.appendTo($("#quiz-choices-ul"));
+  }
+
+  console.log("DRAW")
+  // draw the climber
+  if (climber === 0) {
+
+    $climber.addClass("first");
+  } else if (climber === 1) {
+    $climber.removeClass("first");
+    $climber.addClass("second");
+  }
+};
 
 
 
