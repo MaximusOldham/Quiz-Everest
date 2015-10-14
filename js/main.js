@@ -1,8 +1,11 @@
 console.log('connected main.js');
 
+
+/* MODEL */
+
 var score = 0;
 
-var question = [
+var questions = [
   "When was America founded?",
   "Who said this famous quote: 'My fellow Americans, ask not what your country can do for you, ask what you can do for your country?'",
   "Who did not sign the Declaration of Independence?",
@@ -40,30 +43,42 @@ var answers = [
 
 var currentQuestion = 0;
 
+/* EVENT LISTENERS */
+
+
 $("#btnPlay").on("click", function(evt){
   $('div.button').hide("slow");
-  
-  $("#quiz-question").append(question[0]);
+  render();
+});
 
-  for(var i=0; i < answers[0].choices.length; i++) {
+var nextQuestion = function() {
+  currentQuestion++;
+  render();
+};
+
+var render = function() {
+  // get the current question info
+  var question = questions[currentQuestion];
+  var answer   = answers[currentQuestion];
+
+  // clear out the question on the page
+  $("#quiz-question").html("");
+  $("#quiz-choices-ul").html("");
+
+  // add the new question
+  $("#quiz-question").append(question);
+
+  for(var i=0; i < answer.choices.length; i++) {
     var $li  = $("<li>");
-    var $btn = $("<button>", {text: answers[0].choices[i], id: 'a' + i});
 
-    $btn.on("click", function(evt) {
-      var answer = evt.target.id.slice(-1);
-
-      if (parseInt(answer) !== answers[currentQuestion].correct) {
-        // ???
-      } else {
-        console.log("You're right!");
-      }
-    });
+    // build all of the answer buttons with click listeners
+    var $btn = $("<button>", {text: answer.choices[i], id: 'a' + i});
+    $btn.on("click", checkAnswer);
 
     $li.append($btn)
     $li.appendTo($("#quiz-choices-ul"));
   }
-
-});
+};
 
 
 // $('<li>').click(function() {
@@ -82,15 +97,17 @@ function wrongAnswer() {
 var chosen;
 var actual;
 
-function checkAnswer(chosen, actual) {
-  if (chosen === actual) {
-    rightAnswer();
-  } else {
-    wrongAnswer();
-  };
-}
+var checkAnswer = function(evt) {
+  var choice = evt.target.id.slice(-1);
 
-$(".quiz-choices-ul").on("click", checkAnswer)
+  if (parseInt(choice) === answers[currentQuestion].correct) {
+    console.log('CORRECT');
+    score++;
+  }
+  nextQuestion();
+};
+
+// $(".quiz-choices-ul").on("click", checkAnswer)
 
 
 // $(answers[0].choices.forEach).click(function(){
