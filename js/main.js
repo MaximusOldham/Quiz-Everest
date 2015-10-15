@@ -2,8 +2,9 @@ console.log('connected main.js');
 
 
 /* MODEL */
-
-var score = 0;
+var currentQuestion
+var climber;
+var score;
 
 var questions = [
   "When was America founded?",
@@ -24,8 +25,8 @@ var questions = [
 ];
 
 var answers = [
-  { correct: 1, choices: ["July 4, 1785", "July 4, 1776", "July 4, 1804", "July 4, 1876"] },
-  { correct: 3, choices: ["Ronald Reagan", "Abraham Lincoln", "Franklin D. Roosevelt", "John F. Kennedy"] },
+  { correct: 1, choices: ["July 4, 1785", "July 4, 1776", "Dec. 25, 1804", "Dec. 25, 1876"] },
+  { correct: 3, choices: ["Ronald Reagan", "Abraham Lincoln", "Jacob W Taylor", "John F. Kennedy"] },
   { correct: 2, choices: ["John Hancock", "Benjamin Franklin", "George Washington", "Thomas Jefferson"] },
   { correct: 2, choices: ["George Washington", "Woodrow Wilson", "Franklin D. Roosevelt", "James Madison"] },
   { correct: 3, choices: ["1965", "1968", "1970", "1969"] },
@@ -35,15 +36,18 @@ var answers = [
   { correct: 2, choices: ["God Bless America", "America the Beautiful", "Star Spangled Banner", "99 Problems"] },
   { correct: 0, choices: ["13", "7", "17", "10"] },
   { correct: 1, choices: ["Bear", "Bald Eagle", "Lion", "Liger"] },
-  { correct: 2, choices: ["Pocahontas", "Susan B Anthony", "Sacagawea", "Martha Stewert"] },
+  { correct: 2, choices: ["Pocahontas", "Susan B Anthony", "Sacagawea", "Martha Stewart"] },
   { correct: 2, choices: ["Germany", "Iceland", "Russia", "England"] },
   { correct: 0, choices: ["1919-1933", "1923-1925", "1933-1941", "1941-1944"] },
   { correct: 0, choices: ["True", "False"]}
 ];
 
-var currentQuestion = 0;
-
-var climber = 0;
+var instructions = ["Welcome to Quiz Everest!", 
+                    "The goal of the game is to move your climber as high up the mountain as you can.",
+                    "You can do that by answering questions correctly!",
+                    "For every 3 questions that are answered correctly, your climber will move up the mountain.",
+                    "If you can answer all 15 questions correctly, you will makeit to the top!",
+                    "Try to get climb as high as you can!"];
 
 
 /* CACHE DOM REFERENCES */
@@ -54,11 +58,31 @@ $climber = $('#climber');
 /* EVENT LISTENERS */
 
 $("#btnPlay").on("click", function(evt){
-  $('div.button').hide("slow");
-  render();
+  startPlay();
 });
 
-var nextQuestion = function() {
+$("#playagain").on("click", function(evt){
+  startPlay();
+});
+
+$("#btnHow").on("click", function(evt){
+  for(var i=0; i < instructions.length; i++) {
+    var instructionLi = $("<li>" + instructions[i] + "</li>").addClass("animated bounce");
+    $("#instructions-ul").append(instructionLi);
+  }
+})
+
+function startPlay() {
+  $('div.button').hide("slow");
+  $('#endgame').hide();
+  currentQuestion = 0;
+  climber = 0;
+  score = 0;
+  $('#mainplay').show();
+  render();
+}
+
+function nextQuestion() {
   currentQuestion++;
   render();
 };
@@ -67,14 +91,6 @@ var nextQuestion = function() {
 //   chosen = target.text;
 // })
 
-function rightAnswer() {
-  //DOM manipulation with jQuery
-  //score += 1
-}
-
-function wrongAnswer() {
-  //DOM manipulation with jQuery
-}
 
 var chosen;
 var actual;
@@ -83,7 +99,6 @@ var checkAnswer = function(evt) {
   var choice = evt.target.id.slice(-1);
 
   if (parseInt(choice) === answers[currentQuestion].correct) {
-    // console.log('CORRECT');
     increaseScore();
   }
   nextQuestion();
@@ -91,11 +106,45 @@ var checkAnswer = function(evt) {
 
 var increaseScore = function() {
   score++;
-
   if (score % 3 === 0) {
     console.log('CLIMB!');
     climber++;
+    console.log('climber', climber)
   }
+}
+
+function getMessage() {
+  var msg;
+  switch (score) {
+    case 0:
+    case 1:
+    case 2:
+      msg = "You must be a terrorist.";
+      break;
+    case 3:
+    case 4:
+    case 5:
+      msg = "You're probably a Russian Spy.";
+      break;
+    case 6:
+    case 7:
+    case 8:
+      msg = "You must donate to ISIS. Just leave.";
+      break;
+    case 9:
+    case 10:
+    case 11:
+      msg = "I bet you decorate for the 4th of July.";
+      break;
+    case 12:
+    case 13:
+    case 14:
+      msg = "Wave that flag high and proud you Patriot!";
+      break;
+    case 15:
+      msg = "Flap those wings of freedom you glorious American Bald Eagle!";
+  }
+  return msg;
 }
 
 // $(".quiz-choices-ul").on("click", checkAnswer)
@@ -105,51 +154,19 @@ var increaseScore = function() {
 //   console.log("test");
 // });
 
-//////BEN'S RANDOM CODE
-
-// var question1 = {
-//   question: "When was America founded?",
-//   answers: answer[0]
-//   // answers: {answer1: "1785", answer2: "1776", answer3: "1804", answer4: "1876"},
-// };
-
-// var question2 = {
-//   question: "Who said this famous quote: 'My fellow Americans, ask not what your country can do for you, ask what you can do for your country?'",
-//   answers: answer[1]
-//   correctAnswer: answer[1][3]
-// }
-
-
-// var question = [question1,
-//                 question2,
-//                 "Who did not sign the Declaration of Independence?",
-//                 "Which President was the only one to serve more than two terms?",
-//                 "In what year did America land the first man on the moon?",
-//                 "In which country did America buy the Louisiana Purchase from?",
-//                 "The deadliest war in American history is?",
-//                 "How many Amendments are in the United States Constitution?",
-//                 "What is the title of the National Anthem?",
-//                 "How many original Colonies were there?",
-//                 "What is the offical animal of America?",
-//                 "Who was the woman that helped Lewis and Clark in their expedition?",
-//                 "What country did the United States icehockey team beat in the 1980 Olympics, in what is known as the 'Miracle On Ice'?",
-//                 "In what sad years did the U.S. Prohibition occur?",
-//                 "BONUS: America is the greatest country in the gosh darn World!"]
-
-
-
-
-// $("#btnPlay").on("click", function(evt){
-//   $('div.button').hide("slow");
-//   $("#quiz-question").append(question[1].question);
-//     for(var i=0; i < answer[1].length; i++) {
-//       $("#quiz-choices-ul").append("<li>" + question[1].answers + "</li>");
-//     }
-// });
-
 /* RENDER */
 
 var render = function() {
+  renderClimber();
+
+  if (currentQuestion > 14) {
+    $('#endscore').html(score);
+    $('#endgame').show();
+    $('#message').html(getMessage());
+    $('#mainplay').hide();
+    return;
+  }
+
   // get the current question info
   var question = questions[currentQuestion];
   var answer   = answers[currentQuestion];
@@ -171,11 +188,12 @@ var render = function() {
     $li.append($btn)
     $li.appendTo($("#quiz-choices-ul"));
   }
+};
 
-  console.log("DRAW")
+function renderClimber () {
   // draw the climber
   if (climber === 0) {
-
+    $climber.removeAttr('class');
     $climber.addClass("first");
   } else if (climber === 1) {
     $climber.removeClass("first");
@@ -203,8 +221,7 @@ var render = function() {
     $climber.removeClass("fifth");
     $climber.addClass("sixth");
   } 
-};
-
+}
 
 
 

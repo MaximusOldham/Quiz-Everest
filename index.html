@@ -3,34 +3,48 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Quiz Everest</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 <body>
 
-<h1>Quiz Everest</h1>
-<h2>How American Are You?</h2>
+<div id="mainplay">
+	<h1>Quiz Everest</h1>
+	<h2>How American Are You?</h2>
 
 
-<div class="button">
-	<button class="menu-buttons" id="btnPlay">PLAY!</button>
-	<button class="menu-buttons" id="btnHow">How To Play</button>
-</div>
-
-
-
-<div id="quiz-questions-box">
-	<h3 id="quiz-question"></h3>
-</div>
+	<div class="button">
+		<button class="menu-buttons" id="btnPlay">PLAY!</button>
+		<button class="menu-buttons" id="btnHow">How To Play</button>
+	</div>
 
 
 
-<div id="quiz-choices">
-	<ul id="quiz-choices-ul"></ul>
+	<div id="quiz-questions-box">
+		<h3 id="quiz-question"></h3>
+	</div>
+
+	<div id="quiz-choices">
+		<ul id="quiz-choices-ul"></ul>
+	</div>
+
+	<div id="instructions">
+		<ul id="instructions-ul"></ul>
+	</div>
 </div>
 
 <div id="climber"></div>
 
+<div id="endgame">
+	<h1 class="endtitle">Quiz Finished</h1>
+	<h3 class="endtitle">Your Score</h3>
+	<h1><span id="endscore"></span> / 15</h1>
+	<div class="endmessage">
+		<p id="message">This will be the message...</p>
+	</div>
+	<button id="playagain">Play Again</button>
+</div>
 
 <script src="./js/main.js"></script>
 </body>

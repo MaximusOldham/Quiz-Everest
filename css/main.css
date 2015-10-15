@@ -11,11 +11,16 @@ h2 {
   margin-top: 0px;
 }
 
+h3 {
+  font-family: Century Gothic, sans-serif;
+  font-size: 25px;
+}
+
 body {
 	width: 50%;
 	background-image: url(https://i.imgur.com/KOf8q5i.png);
 	background-repeat: no-repeat;
-	background-size: cover; 
+	background-size: cover;
 }
 button {
   -webkit-border-radius: 42;
@@ -27,25 +32,10 @@ button {
   background: #d93434;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  margin-bottom: 5px;
+  border: 0;
 
   cursor: pointer;
-}
-
-button:hover {
-  background: #3cb0fd;
-  text-decoration: none;
-}
-
-button {
-  -webkit-border-radius: 42;
-  -moz-border-radius: 42;
-  border-radius: 42px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 25px;
-  background: #d93434;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
 }
 
 button:hover {
@@ -59,10 +49,10 @@ button:hover {
 
 #climber {
   visibility: hidden;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   position: absolute;
-  background-image: url(http://www.mountainguides.com/photos/everest-south/summit-waechter.jpg);
+  background-image: url("../assets/summitwaechter.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -71,36 +61,58 @@ button:hover {
 
 #climber.first {
   visibility: visible;
-  bottom:  80px;
-  left:    150px;
+  bottom:  120px;
+  right:   0px;
 }
 
 #climber.second {
   visibility: visible;
-  bottom:  200px;
-  left:    320px;
+  bottom:  160px;
+  right:   45px;
 }
 
 #climber.third {
   visibility: visible;
-  bottom:  300px;
-  left:    400px;
+  bottom:  230px;
+  right:   120px;
 }
 
 #climber.fourth {
   visibility: visible;
-  bottom:  360px;
-  left:    480px;
+  bottom:  325px;
+  right:   200px;
 }
 
 #climber.fifth {
   visibility: visible;
-  bottom:  400px;
-  left:    610px;
+  bottom:  410px;
+  right:   310px;
 }
 
 #climber.sixth {
   visibility: visible;
-  bottom:  500px;
-  left:    700px;
+  bottom:  465px;
+  right:   410px;
 }
+
+#endgame {
+  display: none;
+   margin: 0 auto;
+   text-align: center;
+}
+
+.endtitle {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
