@@ -28,7 +28,7 @@ var answers = [
   { correct: 1, choices: ["July 4, 1785", "July 4, 1776", "Dec. 25, 1804", "Dec. 25, 1876"] },
   { correct: 3, choices: ["Ronald Reagan", "Abraham Lincoln", "Jacob W Taylor", "John F. Kennedy"] },
   { correct: 2, choices: ["John Hancock", "Benjamin Franklin", "George Washington", "Thomas Jefferson"] },
-  { correct: 2, choices: ["George Washington", "Woodrow Wilson", "Franklin D. Roosevelt", "James Madison"] },
+  { correct: 2, choices: ["George Washington", "Johnny Robert", "Franklin D. Roosevelt", "James Madison"] },
   { correct: 3, choices: ["1965", "1968", "1970", "1969"] },
   { correct: 3, choices: ["Germany", "England", "Spain", "France"] },
   { correct: 2, choices: ["The Korean War", "The Vietnam War", "The Civil War", "World War II"] },
@@ -70,15 +70,16 @@ $("#btnHow").on("click", function(evt){
     var instructionLi = $("<li>" + instructions[i] + "</li>").addClass("animated bounceInLeft");
     $("#instructions-ul").append(instructionLi);
   }
+  $('#btnHow').attr('disabled', true);
 })
 
 function startPlay() {
-  $('div.button').hide("slow");
-  $('#endgame').hide();
   currentQuestion = 0;
   climber = 0;
   score = 0;
+  $('#endgame').hide();
   $('#mainplay').show();
+  $('div.button, #instructions').hide("slow");
   render();
 }
 
