@@ -105,6 +105,17 @@ button:hover {
   text-align: center;
 }
 
+#instructions {
+  font-family: 'Questrial', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #1B83BF;
+}
+
+.endmessage {
+  font-size: 28px;
+  font-family: Century Gothic, sans-serif;
+}
 
 
 

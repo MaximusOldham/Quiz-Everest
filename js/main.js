@@ -67,7 +67,7 @@ $("#playagain").on("click", function(evt){
 
 $("#btnHow").on("click", function(evt){
   for(var i=0; i < instructions.length; i++) {
-    var instructionLi = $("<li>" + instructions[i] + "</li>").addClass("animated bounce");
+    var instructionLi = $("<li>" + instructions[i] + "</li>").addClass("animated bounceInLeft");
     $("#instructions-ul").append(instructionLi);
   }
 })
@@ -101,7 +101,7 @@ var checkAnswer = function(evt) {
   if (parseInt(choice) === answers[currentQuestion].correct) {
     increaseScore();
   }
-  nextQuestion();
+    nextQuestion();
 };
 
 var increaseScore = function() {
@@ -119,30 +119,30 @@ function getMessage() {
     case 0:
     case 1:
     case 2:
-      msg = "You must be a terrorist.";
+      msg = "Wow, You must be a terrorist.";
       break;
     case 3:
     case 4:
     case 5:
-      msg = "You're probably a Russian Spy.";
+      msg = "Are you serious? You're probably a Russian Spy.";
       break;
     case 6:
     case 7:
     case 8:
-      msg = "You must donate to ISIS. Just leave.";
+      msg = "Pretty Bad.. You probably donate to ISIS.";
       break;
     case 9:
     case 10:
     case 11:
-      msg = "I bet you decorate for the 4th of July.";
+      msg = "You did okay. I bet you decorate for the 4th of July.";
       break;
     case 12:
     case 13:
     case 14:
-      msg = "Wave that flag high and proud you Patriot!";
+      msg = "Good Job! Wave that flag high and proud you Patriot!";
       break;
     case 15:
-      msg = "Flap those wings of freedom you glorious American Bald Eagle!";
+      msg = "Absolute Perfection! Flap those wings of freedom you glorious American Bald Eagle!";
   }
   return msg;
 }
